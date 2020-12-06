@@ -1,9 +1,6 @@
 # esbuild-glslify
 esbuild plugin for glslify
 
-> :warning: Disclaimer: this is a very barebone, naive glslify plugin for esbuild. I have only tested simple use cases and don't use transforms.
-
-
 ### Installation :package:
 
 ```bash
@@ -39,9 +36,18 @@ esbuild.build({
 })
 ```
 
-### Roadmap
+It supports [source transforms](https://github.com/glslify/glslify#source-transforms) as well:
+```js
 
-- Transforms: tbh I'm not sure how glslify transform streams work, but if you know let me know!
+import esbuild from 'esbuild'
+import glslify from 'esbuild-glslify'
+
+esbuild.build({
+    plugins: [glslify({
+        transform: ['glslify-hex']
+    })]
+})
+```
 
 ### License :pencil:
 

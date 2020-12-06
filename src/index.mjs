@@ -1,6 +1,6 @@
-import { default as glsl } from 'glslify'
+import { default as glslify } from 'glslify'
 
-export default function({extensions} = {}) {
+export default function({extensions, transform = []} = {}) {
     extensions = extensions || ['.glsl', '.vert', '.frag', '.vs', '.fs']
     extensions = extensions.map(ext => ext.replace(/^\./, '').replace(/\./g, '\/.')).join('|')
     const filter = new RegExp(`\\.(${extensions})$`)
@@ -8,9 +8,11 @@ export default function({extensions} = {}) {
     return {
         name: 'esbuild-glslify',
         setup(build) {
-            build.onLoad({ filter }, (args) => {
-                let contents = glsl.file(args.path)
+            let basedir = process.cwd()
 
+            build.onLoad({ filter }, (args) => {
+                let contents = glslify.file(args.path, {basedir, transform})
+                
                 return {
                     contents,
                     loader: 'text'

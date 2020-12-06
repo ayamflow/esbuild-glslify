@@ -1,6 +1,6 @@
 {
   "name": "esbuild-glslify",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "esbuild plugin for glslify",
   "main": "lib/index.js",
   "dependencies": {
