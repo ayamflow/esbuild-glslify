@@ -1,14 +1,16 @@
 {
   "name": "esbuild-glslify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "esbuild plugin for glslify",
-  "main": "index.js",
+  "main": "lib/index.js",
   "dependencies": {
     "glslify": "^7.1.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "microbundle": "^0.12.4"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "microbundle build -i src/index.mjs -o lib/index.js --no-pkg-main -f cjs --no-compress --sourcemap false"
   },
   "repository": {
     "type": "git",
