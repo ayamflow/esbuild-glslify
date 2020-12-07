@@ -1,6 +1,8 @@
 # esbuild-glslify
 esbuild plugin for glslify
 
+> :warning: At the moment, this only works with `require('./shader.glsl)` calls. Esbuild doesn't shim the node environment, which makes it tricky to require glslify in the front-end to use template literals.
+
 ### Installation :package:
 
 ```bash
